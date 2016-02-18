@@ -4,14 +4,11 @@
 ## Docker
 Pull the [timlien/docker-smartfox][2] image and run it with following command.
 ```bash
-docker pull timlien/docker-saiku
-docker run -d -p 8080:8080 --name docker-saiku timlien/docker-saiku
+docker pull timlien/docker-smartfox
+docker run -d -p 8080:8080 -p 9933:9933 --name docker-smartfox timlien/docker-smartfox
 ```
 
 ## SmartFox Server 2X
-```
-docker run --name some-container-name -p 8080:8080 -p 9933:9933 -d timlien/smartfox
-```
 Check http://localhost:8080 and http://localhost:8080/admin links.
 Default username is "sfsadmin", default password is "sfsadmin".
 
