@@ -9,7 +9,7 @@ RUN apt-get update && \
     unzip \
     git
 
-RUN makedir -p /vagrant
+RUN mkdir -p /vagrant
 
 WORKDIR /vagrant
 
