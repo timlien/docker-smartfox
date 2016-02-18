@@ -1,0 +1,5 @@
+# exclude all files but following files
+/*
+!Dockerfile
+!README.md
+!.gitignore
