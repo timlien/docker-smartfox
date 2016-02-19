@@ -9,9 +9,9 @@ RUN apt-get update && \
     unzip \
     git
 
-RUN mkdir -p /vagrant
+RUN mkdir -p /var
 
-WORKDIR /vagrant
+WORKDIR /var
 
 RUN wget http://www.smartfoxserver.com/downloads/sfs2x/SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
     tar xf SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
@@ -31,7 +31,7 @@ RUN wget http://smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-2.11.0.zi
     ./install-linux.sh && \
     cd .. && rm -rf SFS2X-Patch-2.11.0
 
-WORKDIR /vagrant/SmartFoxServer_2X/SFS2X
+WORKDIR /var/SmartFoxServer_2X/SFS2X
 
 CMD ./sfs2x.sh
 
