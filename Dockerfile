@@ -27,7 +27,7 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
 RUN wget http://smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-2.11.1.zip && \
     unzip SFS2X-Patch-2.11.1.zip -d SmartFoxServer_2X && \
     rm SFS2X-Patch-2.11.1.zip && \
-    cd SmartFoxServer_2X/SFS2X-Patch-2.11.1.zip && \
+    cd SmartFoxServer_2X/SFS2X-Patch-2.11.1 && \
     ./install-linux.sh && \
     cd .. && rm -rf SFS2X-Patch-2.11.1
 
