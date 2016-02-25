@@ -25,11 +25,11 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
     mv jre1.8.0_60 SmartFoxServer_2X/jre
 
 RUN wget http://smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-2.11.1.zip && \
-    unzip SFS2X-Patch-2.11.0.zip -d SmartFoxServer_2X && \
-    rm SFS2X-Patch-2.11.0.zip && \
-    cd SmartFoxServer_2X/SFS2X-Patch-2.11.0 && \
+    unzip SFS2X-Patch-2.11.1.zip -d SmartFoxServer_2X && \
+    rm SFS2X-Patch-2.11.1.zip && \
+    cd SmartFoxServer_2X/SFS2X-Patch-2.11.1.zip && \
     ./install-linux.sh && \
-    cd .. && rm -rf SFS2X-Patch-2.11.0
+    cd .. && rm -rf SFS2X-Patch-2.11.1
 
 WORKDIR /var/SmartFoxServer_2X/SFS2X
 
