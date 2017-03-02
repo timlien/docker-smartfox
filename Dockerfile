@@ -2,37 +2,34 @@ FROM debian
 
 MAINTAINER Tim Lien <timlientw@gmail.com>
 
-ENV SMARTFOX_VERSION 2_9_0_64
+ENV SMARTFOX_VERSION 2_12_0
+ENV SMARTFOX_PATCH_VERSION 2.12.3
 
 RUN apt-get update && \
-    apt-get install -y wget \
-    unzip \
-    git
+    apt-get install -y \
+    wget \
+    unzip
 
-RUN mkdir -p /var
+RUN mkdir -p /tmp
 
-WORKDIR /var
+WORKDIR /tmp
 
 RUN wget http://www.smartfoxserver.com/downloads/sfs2x/SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
-    tar xf SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
-    rm SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
-    rm -rf SmartFoxServer_2X/jre && \
-    cp SmartFoxServer_2X/SFS2X/lib/jetty/modules/npn/npn-1.7.0_45.mod SmartFoxServer_2X/SFS2X/lib/jetty/modules/npn/npn-1.8.0_60.mod
+    tar xf SFS2X_unix_${SMARTFOX_VERSION}.tar.gz
 
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jre-8u60-linux-x64.tar.gz && \
-    tar xf jre-8u60-linux-x64.tar.gz && \
-    rm jre-8u60-linux-x64.tar.gz && \
-    mv jre1.8.0_60 SmartFoxServer_2X/jre
+RUN wget http://www.smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-${SMARTFOX_PATCH_VERSION}.zip && \
+    unzip SFS2X-Patch-${SMARTFOX_PATCH_VERSION}.zip -d SmartFoxServer_2X && \
+    cd SmartFoxServer_2X/SFS2X-Patch-${SMARTFOX_PATCH_VERSION} && \
+    ./install-linux.sh
 
-RUN wget http://smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-2.11.1.zip && \
-    unzip SFS2X-Patch-2.11.1.zip -d SmartFoxServer_2X && \
-    rm SFS2X-Patch-2.11.1.zip && \
-    cd SmartFoxServer_2X/SFS2X-Patch-2.11.1 && \
-    ./install-linux.sh && \
-    cd .. && rm -rf SFS2X-Patch-2.11.1
+WORKDIR /opt/SmartFoxServer_2X
 
-WORKDIR /var/SmartFoxServer_2X/SFS2X
+VOLUME /opt/SmartFoxServer_2X
 
-CMD ./sfs2x.sh
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE 8080 9933
+EXPOSE 8080 9933 8787
+CMD ["smartfox"]
