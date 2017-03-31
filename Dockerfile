@@ -3,7 +3,7 @@ FROM debian
 MAINTAINER Tim Lien <timlientw@gmail.com>
 
 ENV SMARTFOX_VERSION 2_12_0
-ENV SMARTFOX_PATCH_VERSION 2.12.3
+ENV SMARTFOX_PATCH_VERSION 2.12.4
 
 RUN apt-get update && \
     apt-get install -y \
@@ -27,9 +27,12 @@ WORKDIR /opt/SmartFoxServer_2X
 VOLUME /opt/SmartFoxServer_2X
 
 COPY docker-entrypoint.sh /usr/local/bin/
+
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 8080 9933 8787
+
 CMD ["smartfox"]
