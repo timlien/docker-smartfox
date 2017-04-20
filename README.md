@@ -5,9 +5,9 @@ Run the [timlien/docker-smartfox][1] image with following command.
 ```bash
 docker run -d \
     -p 8080:8080 -p 9933:9933 -p 8787:8787 \
-    -v /path/to/local/datadir:/opt/SmartFoxServer_2X \
+    -v /datadir:/opt/SmartFoxServer_2X \
     --name docker-smartfox \
-    timlien/docker-smartfox:2.12.4
+    timlien/docker-smartfox:2.12.5
 ```
 
 ## SmartFox Server 2X Admin
