@@ -1,5 +1,6 @@
 # exclude all files but following files
 /*
 !Dockerfile
+!docker-entrypoint.sh
 !README.md
 !.gitignore
