@@ -7,7 +7,7 @@ docker run -d \
     -p 8080:8080 -p 9933:9933 -p 8787:8787 \
     -v /datadir:/opt/SmartFoxServer_2X \
     --name docker-smartfox \
-    timlien/docker-smartfox:2.12.5
+    timlien/docker-smartfox
 ```
 
 ## SmartFox Server 2X Admin

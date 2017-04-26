@@ -9,15 +9,9 @@ install_smartfox() {
     cd ${DATADIR}
 
     tar xf ${TEMPDIR}/SFS2X_unix_${SMARTFOX_VERSION}.tar.gz
-
-    unzip ${TEMPDIR}/SFS2X-Patch-${SMARTFOX_PATCH_VERSION}.zip -d SmartFoxServer_2X && \
-        cd SmartFoxServer_2X/SFS2X-Patch-${SMARTFOX_PATCH_VERSION} && \
-        ./install-linux.sh && \
-        cd .. && \
-        rm -rf SFS2X-Patch-${SMARTFOX_PATCH_VERSION}   
 }
 
-if [ "$1" = 'smartfox' ]; then
+if [ "$1" = 'sfs2x' ]; then
     echo 'Executing smartfox docker entrypoint'
 
     if [ ! -f "$DATADIR$EXEPATH/sfs2x.sh" ]; then
