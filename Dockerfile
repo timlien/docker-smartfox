@@ -3,6 +3,7 @@ FROM debian
 MAINTAINER Tim Lien <timlientw@gmail.com>
 
 ENV SMARTFOX_VERSION 2_13_0
+ENV SMARTFOX_PATCH_VERSION 2.13.1
 
 RUN apt-get update && \
     apt-get install -y \
@@ -13,8 +14,9 @@ RUN mkdir -p /tmp
 
 WORKDIR /tmp
 
-RUN wget http://www.smartfoxserver.com/downloads/sfs2x/SFS2X_unix_${SMARTFOX_VERSION}.tar.gz && \
-    tar xf SFS2X_unix_${SMARTFOX_VERSION}.tar.gz
+RUN wget http://www.smartfoxserver.com/downloads/sfs2x/SFS2X_unix_${SMARTFOX_VERSION}.tar.gz
+
+RUN wget http://www.smartfoxserver.com/downloads/sfs2x/patches/SFS2X-Patch-${SMARTFOX_PATCH_VERSION}.zip
 
 WORKDIR /opt/SmartFoxServer_2X
 
