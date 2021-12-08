@@ -2,8 +2,8 @@ FROM debian
 
 MAINTAINER Tim Lien <timlientw@gmail.com>
 
-ENV SMARTFOX_VERSION 2_13_0
-ENV SMARTFOX_PATCH_VERSION 2.13.3
+ENV SMARTFOX_VERSION 2_17_0
+ENV SMARTFOX_PATCH_VERSION 2.17.3
 
 RUN apt-get update && \
     apt-get install -y \
