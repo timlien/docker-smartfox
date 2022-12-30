@@ -3,7 +3,7 @@ FROM debian
 MAINTAINER Tim Lien <timlientw@gmail.com>
 
 ENV SMARTFOX_VERSION 2_18_0
-ENV SMARTFOX_PATCH_VERSION 2.18.3
+ENV SMARTFOX_PATCH_VERSION 2.18.4
 
 RUN apt-get update && \
     apt-get install -y \

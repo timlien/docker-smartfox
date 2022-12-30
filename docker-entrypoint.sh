@@ -20,7 +20,7 @@ install_smartfox() {
 if [ "$1" = 'sfs2x' ]; then
     echo 'Executing smartfox docker entrypoint'
 
-    if [ ! -f "$DATADIR$EXEPATH/sfs2x.sh" ]; then
+    if [ ! -f "$DATADIR$EXEPATH/sfs2x-service" ]; then
         echo 'Smartfox folder does not exist trying to install'
         install_smartfox
     fi 
@@ -28,7 +28,7 @@ if [ "$1" = 'sfs2x' ]; then
     echo 'Change directory to smartfox start shell'
     cd ${DATADIR}${EXEPATH}
 
-    echo 'Start smartfox shell'
-    exec "./sfs2x.sh"
+    echo 'Run smartfox service'
+    exec ./sfs2x-service run
 
 fi
